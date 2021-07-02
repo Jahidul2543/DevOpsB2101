@@ -1,0 +1,14 @@
+{
+  "president":{
+    "name":"Zaphod Beeblebrox",
+    "species":"Betelgeusian",
+    "age":4,
+    "price": null,
+    "health" : true,
+    "hobby":[
+      "Cricket",
+      "Football",
+      "Cycling"
+    ]
+  }
+}
