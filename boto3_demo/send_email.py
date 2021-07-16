@@ -12,6 +12,7 @@ s3_client = boto3.client('s3')
 ses_client = boto3.client('ses')
 
 
+
 def list_buckets():
     bucket_list = []
     response = s3_client.list_buckets()['Buckets']
@@ -24,10 +25,12 @@ def list_buckets():
             send_email(bucket_name)
         bucket_list.append(bucket_name)
 
-
     print(bucket_list)
     print(len(bucket_list))
-    #print(json.loads(response.text))
+    return {
+        "bucketsList" : bucket_list
+    }
+    # print(json.loads(response.text))
     # print(type(response))
     # print(response)
     # pprint(response)
@@ -58,5 +61,6 @@ def send_email(bucket_name):
     print('email response {}'.format(response))
 
 
-list_buckets()
+# r = list_buckets()
+# print(r)
 
