@@ -2,6 +2,7 @@
 import boto3
 import json
 import logging
+import lambda_demo.base
 
 
 """
@@ -24,6 +25,7 @@ def lambda_handler(event, context):
     logger.info('Invoked Funtion ARN: {}'.format(context.invoked_function_arn))
     # bucket_list = list_buckets()
     object_url = build_s3_object_url(event)
+    pre_signed_url = lambda_demo.base.create_presigned_url()
     send_email(object_url)
 
     return {
@@ -44,7 +46,7 @@ def list_buckets():
         bucket_list.append(bucket_name)
 
     logger.info('Bucket List: {}'.format(bucket_list))
-    #print(len(bucket_list))
+    # print(len(bucket_list))
     return bucket_list
     # print(json.loads(response.text))
     # print(type(response))
