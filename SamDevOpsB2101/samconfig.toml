@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "SamDevOps2101"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-r20dhgzq4zg8"
+s3_prefix = "SamDevOps2101"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"

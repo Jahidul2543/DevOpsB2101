@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  SamDevOpsB2101
+
+  Sample SAM Template for SamDevOpsB2101
+
+Globals:
+  Function:
+    Timeout: 300
+
+Resources:
+  SamDevOps2101:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: app/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        SamDevOps2101Api:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /hello
+            Method: get
+
+Outputs:
+  SamDevOps2101Api:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  SamDevOps2101Function:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt SamDevOps2101.Arn
+  SamDevOps2101FunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt SamDevOps2101Role.Arn
